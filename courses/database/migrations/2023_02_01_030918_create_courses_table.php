@@ -25,7 +25,8 @@ return new class extends Migration
             $table->text('link');
             $table->unsignedBigInteger('submitted_by')->nullable();
             // $table->foreignId('submitted_by')->constrained('users');
-            $table->unsignedBigInteger('duration');
+            $table->unsignedBigInteger('duration')->default(0)->comment('0 = 1-5 hours, 1 = 5-10 hours, 2 = 10+ hours');
+            $table->unsignedBigInteger('difficulty_level')->default(0)->comment('0 = Beginner, 1 = Intermediate, 2 = Advanced');
             $table->unsignedBigInteger('platform_id')->nullable();
             // $table->foreignId('platform_id')->constrained('platforms');
 
