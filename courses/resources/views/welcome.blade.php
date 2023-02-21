@@ -43,7 +43,7 @@
             <h1 class="mb-10 text-center heading-tertiory md:mb-16"> Featured Courses </h1>
             <div class="inline-flex flex-wrap w-full gap-10 mx-auto max-w-9xl single-feature">
                 @foreach($courses as $course)
-                 @include('components.course-box')
+                 @include('components.course-box', ['course' => $course])
                @endforeach
             </div>
             <div class="flex justify-center mt-12 mb-12">

@@ -1,11 +1,11 @@
 
 <div class="overflow-hidden bg-white rounded grap-10 shadow-card">
-    <a href="">
+    <a href="{{ route('course', $course->slug) }}">
         <img src="{{$course->image}}" alt="{{$course->title}}" class="object-contain w-full h-auto">
     </a>
     <div class="px-6 pb-5">
         <div class="flex items-center justify-between gap-4 mb-4 mt-7">
-            <a href="" class="w-full text-lg-primary hover:underline">{{$course->name}}</a>
+            <a href="{{ route('course', $course->slug) }}" class="w-full text-lg-primary hover:underline">{{$course->name}}</a>
         </div>
         <div>
             <div class="flex items-center ">
