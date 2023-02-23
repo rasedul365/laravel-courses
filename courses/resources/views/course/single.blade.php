@@ -159,7 +159,7 @@
                                 <a href="#reviews" x-data=""
                                     @click.prevent="document.getElementById('reviews').scrollIntoView({ behavior: 'smooth', block: 'start'})"
                                     class="text-sm text-gray-500">
-                                    0 Reviews
+                                    {{ count($course->reviews) }} Review{{ count($course->reviews) > 1 ? 's' : '' }}
                                 </a>
                             </div>
 
@@ -204,9 +204,19 @@
                         </div>
                     </div>
 
-                    <h2 id="reviews" class="pt-4 mt-4 text-lg font-bold text-gray-900">Reviews</h2>
+                    <h2 id="reviews" class="pt-4 mt-4 text-lg font-bold text-gray-900 mb-6">Reviews</h2>
 
-                    <p class="p-6 mt-2 bg-white rounded-sm shadow">No review yet.</p>
+                    @if (count($course->reviews) > 0)
+                        @foreach ($course->reviews as $review)
+                        <div class="mb-6 bg-white bg-4 px-6 py-4">
+                            <div class="mb-2">{{ $review->comment }}</div>
+                            <h4 class="font-bold">{{ $review->user->name }}</h4>
+                        </div>
+                        @endforeach
+                    @else
+                        <p class="p-6 bg-white rounded-sm shadow">No review yet.</p>
+                    @endif
+
 
                 </div>
 
@@ -237,24 +247,28 @@
                         </button>
                     </div>
 
+
                     <div class="overflow-hidden bg-white border border-gray-200 rounded-sm shadow-sm">
                         <div class="p-6 space-y-4">
                             <h3 class="text-sm font-bold tracking-widest text-gray-900 uppercase">Author
                             </h3>
                             <hr class="mt-5 mb-5 border-gray-200">
+
+                            @foreach ($course->authors as $author)
                             <div class="pb-2 space-y-4">
                                 <div class="aspect-w-3 aspect-h-2">
                                     <img class="object-cover w-48 m-auto shadow"
-                                        src="https://laravelcourses.com/storage/thumbnails/default/8x/kl/y7j4yo00w0oow0g80k8o0.png?p=authors%2F9e8b96b0-8424-40a9-99aa-d914992974af.png&amp;s=pd&amp;widen=200"
-                                        alt="Stephen Rees-Carter Profile Picture">
+                                        src="{{ $author->image }}"
+                                        alt="{{ $author->name }}">
                                 </div>
                                 <div class="space-y-1 text-lg font-medium leading-6 text-center">
-                                    <h4 class="font-semibold">Stephen Rees-Carter</h4>
+                                    <h4 class="font-semibold">{{ $author->name }}</h4>
                                 </div>
 
                                 <ul role="list" class="flex justify-center space-x-5">
+                                    @if(!empty($author->twitter_url))
                                     <li>
-                                        <a href="https://twitter.com/valorin"
+                                        <a href="{{ $author->twitter_url }}"
                                             class="text-gray-400 hover:text-gray-500" target="_blank">
                                             <span class="sr-only">Twitter</span>
                                             <svg class="w-6 h-6" fill="currentColor"
@@ -265,9 +279,11 @@
                                             </svg>
                                         </a>
                                     </li>
+                                    @endif
 
+                                    @if(!empty($author->github_url))
                                     <li>
-                                        <a href="https://github.com/valorin"
+                                        <a href="{{ $author->github_url }}"
                                             class="text-gray-400 hover:text-gray-500" target="_blank">
                                             <span class="sr-only">GitHub</span>
                                             <svg class="w-6 h-6" fill="currentColor"
@@ -278,9 +294,11 @@
                                             </svg>
                                         </a>
                                     </li>
+                                    @endif
 
+                                    @if(!empty($author->website_url))
                                     <li>
-                                        <a href="https://stephenreescarter.net/"
+                                        <a href="{{ $author->website_url }}"
                                             class="text-gray-400 hover:text-gray-500" target="_blank">
                                             <span class="sr-only">Website</span>
                                             <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24"
@@ -292,26 +310,17 @@
                                             </svg>
                                         </a>
                                     </li>
+                                    @endif
+
                                 </ul>
 
                                 <div class="text-sm px-7">
-                                    <p class="text-gray-500">I’m a Security Consultant who specializes in
-                                        security audits and pentesting for Laravel and PHP sites. I’ve been
-                                        building and hacking Laravel apps since 2013, so I know how to help
-                                        you secure your sites.<br>
-                                        <br>
-                                        In addition to security audits, I also run security workshops and
-                                        training for development teams. These are focused on teaching
-                                        developers to think like hackers, to help them write secure code,
-                                        and to identify weaknesses hackers may exploit.<br>
-                                        <br>
-                                        In my spare time, you’ll find me speaking at conferences about
-                                        security (or hacking sites while speaking about security!) and
-                                        writing my Laravel Security in Depth newsletter, which teaches
-                                        Laravel developers of all skill levels about security concepts.</p>
+                                    <p class="text-gray-500">{{ $author->description }}</p>
                                 </div>
 
                             </div>
+                            @endforeach
+
                         </div>
                     </div>
 

@@ -1,5 +1,6 @@
 <x-guest-layout>
-    <!-- Session Status -->
+    <div class="w-96 mx-auto py-12">
+            <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">
@@ -44,4 +45,5 @@
             </x-primary-button>
         </div>
     </form>
+    </div>
 </x-guest-layout>

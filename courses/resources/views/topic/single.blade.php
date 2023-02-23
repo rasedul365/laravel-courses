@@ -4,9 +4,13 @@
             <h2 class="mb-6 text-2xl font-bold text-center">{{ $topic->name }}</h2>
 
             <div class="inline-flex flex-wrap w-full gap-10 mx-auto max-w-7xl single-feature">
-                @foreach ($topic->courses as $course)
+                @foreach ($courses as $course)
                 @include('components.course-box', ['course' => $course])
                 @endforeach
+            </div>
+
+            <div class="mt-4">
+                {{ $courses->links() }}
             </div>
 
         </div>

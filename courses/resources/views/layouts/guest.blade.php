@@ -63,8 +63,24 @@
                                     </div>
                                 </div>
                             </div> --}}
-                        <a href="" class="text-sm font-medium text-gray-500 hover:text-gray-900">Sign in</a>
-                        <a href="" class="inline-flex items-center justify-center px-4 py-2 ml-8 text-sm font-medium text-white bg-black border border-transparent rounded shadow-sm hover:bg-red-500">Sign up</a>
+                        @if(Auth::check())
+                            <span>Welcome: {{ Auth:: user()->name }}</span>
+                            @if(Auth::user()->type === 1)
+                                <a href="{{ route('dashboard') }}" class="inline-flex items-center justify-center px-4 py-2 ml-8 text-sm font-medium text-white bg-black border border-transparent rounded shadow-sm hover:bg-red-500">Dashboard</a>
+                            @else
+                                <a href="" class="inline-flex items-center justify-center px-4 py-2 ml-8 text-sm font-medium text-white bg-black border border-transparent rounded shadow-sm hover:bg-red-500">Submit a course</a>
+                            @endif
+
+                            <form action="{{ route('logout') }}" class="ml-4" method="POST">
+                                @csrf
+                                <button class="text-red-600" type="submit">Logout</button>
+
+                            </form>
+                        @else
+                        <a href="{{ route('login') }}" class="text-sm font-medium text-gray-500 hover:text-gray-900">Sign in</a>
+                        <a href="{{ route('register') }}" class="inline-flex items-center justify-center px-4 py-2 ml-8 text-sm font-medium text-white bg-black border border-transparent rounded shadow-sm hover:bg-red-500">Sign up</a>
+                        @endif
+
                     </div>
                 </header>
             </div>
@@ -79,7 +95,16 @@
                         <h2 class="text-white text-lg-primary-2">Course by Series</h2>
                         <ul class="mt-5">
                             <li class="mb-2">
-                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100"></a>
+                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100">Laravel</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100">PHP</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100">Livewire</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100">Vue.js</a>
                             </li>
                         </ul>
                     </div>
@@ -101,7 +126,13 @@
                         <h2 class="text-white text-lg-primary-2">Course by Level</h2>
                         <ul class="mt-5">
                             <li class="mb-2">
-                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100"></a>
+                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100">Beginner</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100">Intermediate</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100">Advanced</a>
                             </li>
                         </ul>
                     </div>
@@ -109,7 +140,16 @@
                         <h2 class="text-white text-lg-primary-2">Course by Platform</h2>
                         <ul class="mt-5">
                             <li class="mb-2">
-                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100"></a>
+                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100">Laracasts</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100">Laravel Daily</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100">Codecourse</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100">Spatie</a>
                             </li>
                         </ul>
                     </div>
@@ -117,7 +157,16 @@
                         <h2 class="text-white text-lg-primary-2">Course by Topics</h2>
                         <ul class="mt-5">
                             <li class="mb-2">
-                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100"></a>
+                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100">Eloquent</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100">Validation</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100">Testing</a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="" class="text-base text-gray-100 text-links before:text-gray-100">Authorization</a>
                             </li>
                         </ul>
                     </div>

@@ -29,14 +29,16 @@ Route::get('/topics/{slug}', [TopicController::class,'index'])->name('topics');
 // todo controller pending
 Route::get('/courses', [CourseController::class,'index'])->name('courses');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+    Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 });
 
 require __DIR__.'/auth.php';
