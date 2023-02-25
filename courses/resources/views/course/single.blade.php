@@ -332,7 +332,7 @@
 
                             <div class="mt-8 flex flex-wrap gap-2.5">
                                 @foreach ($course->topics as $topic)
-                                <a href="{{ route('topics', $topic->slug) }}"
+                                <a href="{{ route('archive',['topics', $topic->slug]) }}"
                                 class="relative inline-flex items-center rounded-full border border-gray-300 px-3 py-1.5 hover:bg-gray-100">
                                     <div class="absolute flex items-center justify-center flex-shrink-0">
                                     <span class="h-1.5 w-1.5 rounded-full bg-rose-500"

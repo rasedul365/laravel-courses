@@ -40,26 +40,32 @@ class DatabaseSeeder extends Seeder
         $series = [
             [
                 'name'=>'Laravel',
+                'slug' => 'laravel',
                 'image' => 'https://logos-download.com/wp-content/uploads/2016/09/Laravel_logo_wordmark_logotype-700x173.png'
             ],
             [
                 'name'=>'PHP',
+                'slug' => 'php',
                 'image' => 'https://toppng.com/uploads/preview/php-logo-filled-png-115360039248bye41xqdx.png'
             ],
             [
                 'name'=>'Vue js',
+                'slug' => 'vuejs',
                 'image' => 'https://masteringjs.io/assets/images/vue/vue-spelled-out.png'
             ],
             [
             'name'=>'React js',
+            'slug' => 'reactjs',
             'image' => 'https://logos-download.com/wp-content/uploads/2016/09/React_logo_wordmark-700x235.png'
             ],
             [
             'name'=>'Javascript',
+            'slug' => 'javascript',
             'image' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/JavaScript_logo.svg/786px-JavaScript_logo.svg.png'
             ],
             [
                 'name'=>'Symfony',
+                'slug' => 'symfony',
                 'image' => 'https://symfony.com/logos/symfony_black_02.png'
             ]
         ];
@@ -68,6 +74,7 @@ class DatabaseSeeder extends Seeder
             Series::create([
                 'name'=>$item['name'],
                 'image' =>$item['image'],
+                'slug'=>$item['slug'],
             ]);
         }
 
