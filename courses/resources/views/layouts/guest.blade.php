@@ -28,7 +28,7 @@
                         <img class="w-56" src="https://laravel-courses.com/img/logo.png?1.0" alt="Logo">
                     </a>
                     <nav class="hidden h-16 space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <a href=""
+                        <a href="{{ route('courses') }}"
                             class="inline-flex items-center px-1 pt-1 text-base font-medium leading-5 text-gray-500 transition border-b-2 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">Courses</a>
                         <a href=""
                             class="inline-flex items-center px-1 pt-1 text-base font-medium leading-5 text-gray-500 transition border-b-2 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300">Books</a>
@@ -98,7 +98,7 @@
 
     {{ $slot }}
 
-    
+
 
     <!--Forter Section-->
     <footer class="relative w-full py-8 bg-dark">
